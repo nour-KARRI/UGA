@@ -1,0 +1,255 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : 5 mars 2019, 20:01:37
+    Author     : marjo
+*/
+
+body {
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    margin-left: 10px;
+    margin-top: 80px;
+    font-size: 15px;
+}
+
+h1 {
+    font-size: 30px;
+    margin-left: 15px;
+    color: #a60201;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.aucunResultat{
+    font-size: 20px;
+    color:red;
+    font-style: italic;
+}
+
+
+/*--------------------------------------------
+-- tableRepresentation
+---------------------------------------------*/
+.table  {
+    width: 100%;
+    margin-top:15px;
+    margin-bottom: 40px;
+    overflow-y : scroll;
+    overflow-x: scroll;
+    text-align: center;
+    float: left;
+}
+
+.table tbody td {
+    padding: 2px 2px;
+    vertical-align: middle;
+}
+
+.table  thead th {
+    padding: 2px 2px;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.my-custom-scrollbar-representation{
+    position: relative;
+    height: 420px;
+    overflow: auto;
+}
+
+.my-custom-scrollbar-places{
+    position: relative;
+    height: 200px;
+    overflow: auto;
+}
+
+.my-custom-scrollbar_paiement{
+    position: relative;
+    height: 700px;
+    overflow: auto;
+}
+
+my-custom-scrollbar_recapTicket{
+    position: relative;
+    height: 700px;
+    overflow: auto;
+}
+
+
+/*--------------------------------------------
+-- NavBar
+---------------------------------------------*/
+
+.navbar{
+    background-color: black; 
+}
+
+
+/*--------------------------------------------
+-- Form / input / fieldset
+---------------------------------------------*/
+
+form {
+    font-size: 15px;
+    display: inline-block;
+}
+
+.btn {
+    float: right;
+    margin: 4px;
+}
+
+input{
+    border-radius: 4px;
+}
+
+input:focus {
+    border: 3px solid #555;
+    background-color: lightyellow;
+}
+
+input[type=date]:focus {
+    background-color: lightyellow;
+}
+
+fieldset {
+    width: auto;
+    height: auto;
+    border: 1px ;
+    border-radius: 6px;
+    padding: 4px;
+    box-shadow: 0 0 2px 1px grey;
+    margin:10px;    
+}
+
+legend {
+    box-shadow: 0 0 2px 2px grey;
+    width: auto;
+    background-color: white;
+    display: compact;
+    font-weight: bold;
+    padding: 5px 10px ;
+    font-size: 14px;
+    border-radius: 2px;
+    margin-left: 20px;
+}
+
+
+/*--------------------------------------------
+-- Tarifs catégories
+---------------------------------------------*/
+
+#fieldsetTarifs {
+    width: 70%;
+    display: block;
+    height:  180px;
+    position: relative;
+    border: 1px ;
+    border-radius: 6px;
+    box-shadow: 0 0 2px 1px grey;
+}
+
+#tablePrixCategories {
+    overflow-y : scroll;
+}
+
+#tablePrixCategories tbody td {
+    padding: 2px 2px;
+    vertical-align: middle;
+}
+
+#tablePrixCategories thead th {
+    padding: 2px 2px;
+    font-weight: bold;
+}
+
+.my-custom-scrollbar {
+    position: relative;
+    height: 260px;
+    overflow: auto;
+}
+
+.my-custom-scrollbar_panier {
+    position: relative;
+    height: 300px;
+    overflow: auto;
+}
+
+.table-wrapper-scroll-y {
+    display: block;
+}
+
+
+/*--------------------------------------------
+-- Footer/header/sidebar
+---------------------------------------------*/
+
+footer { 
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 4%;
+    width: 95%;
+    background-color: black;
+}
+
+aside {
+    background-color:#a60201;
+    position:fixed;
+    height:100%;
+    width:5%;
+    top:0;
+    right:0;
+}
+
+
+/*--------------------------------------------
+-- synopsis
+---------------------------------------------*/
+
+.syno {
+    display: inline-block;
+}
+
+#synopsis{
+    overflow: auto;
+    position: absolute;
+    background:white;
+    display:none;
+    margin-top: 60px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 2px grey;
+    padding: 6px;
+    height: 300px;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+
+
+#genreSpec{
+    display: none;
+}
+
+.mesPlaces{
+    font-size: 40px;
+    text-align: center;
+   
+    padding: 7px;
+}
+.program{
+font-size: 40px;
+margin: auto auto 20px 200px;
+}
+
+.field{
+    padding: 15px 10px 10px 15px;
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="/MyTheater">
+    <Resource name="jdbc/SPEC"
+              auth="Container"
+              type="javax.sql.DataSource"
+              maxTotal="10"
+              maxIdle="3"
+              maxWaitMillis="10000"
+              driverClassName="org.sqlite.JDBC"
+              url="jdbc:sqlite:/Users/antoine/Projet/m2cci-1819-pi-GP04/sql/BDD_Prod/database.sqlite3" 
+    />
+    <!--url="jdbc:sqlite:C:\Users\nour\ProjetFinetude\m2cci-1819-pi-GP04\sql\BDD_Prod\database.sqlite3"-->
+    <!--url="jdbc:sqlite:C:\Users\marjo\Documents\GitHub\m2cci-1819-pi-GP04\sql\BDD_Prod\database.sqlite3"-->
+    <!-- url="jdbc:sqlite:/Users/antoine/Projet/m2cci-1819-pi-GP04/sql/BDD_Prod/database.sqlite3" -->
+    <!-- "jdbc:sqlite:/home/b/bannouny/projet/m2cci-1819-pi-GP04/sql/BDD_Prod/database.sqlite3" -->
+
+</Context>

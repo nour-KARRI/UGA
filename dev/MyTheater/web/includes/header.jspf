@@ -1,0 +1,27 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+
+
+<!-- Barre de navigation -->
+<nav class="navbar navbar-expand-sm fixed-top">
+    <!-- logo MyTheatre -->
+
+    <div class="container-fluid">
+        <a class="navbar-brand" href="touteLaProg">
+            <img src="images/mytheatre_red.bmp" onmouseover="this.src = 'images/mytheatre_yellow.bmp';" onmouseout="this.src = 'images/mytheatre_red.bmp';"  alt="Logo" width="200px">
+        </a>
+    </div>
+
+    <form name="versRecuperationPanier" action="panierSauvegarde.jsp" method="GET">
+
+        <%
+
+            log(" url " + request.getRequestURL().toString());
+            if (request.getRequestURL().toString().contains("programmationSpectacle")) { %>
+
+        <input type="submit" class="btn btn-info" value="Récupérer Panier" >
+        <%
+            }
+        %> 
+    </form>
+</nav>

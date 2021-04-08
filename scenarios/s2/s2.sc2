@@ -1,0 +1,162 @@
+--=========================================================================
+--                          Scenario Model
+---------------------------------------------------------------------------
+-- This object model is expressed in ScenarioScript1.
+-- See https:--modelscript.readthedocs.io-en-latest-scripts-scenarios1-index.html
+-- ScenarioScript1 is an annotated version of USE OCL.
+-- Annotations are in comments and start with
+--    "@" for statement annotations
+--    "|" for documentation annotations
+--=========================================================================
+--
+--@ scenario model S2
+--@ import glossary model from "../../glossaries-glossaries.gls"
+--@ import class model from "../../classes-classes.cl1"
+--@ import participant model from "../../participants.pas"
+--@ import usecase model from "../../usecases-usecases.uss"
+
+open -q ../../objects/o2/o2.ob2
+
+--@ context
+
+--| Janine est infirmière et est en charge d’organiser une sortie pour son équipe.
+--| Ils sont 8.
+--| Elle veut organiser une soirée avec repas au restaurant et ensuite assister à un spectacle.
+
+--@ end
+
+--@ Janine va ConsulterLaProgrammation
+
+--| Elle consulte le programme en ligne de MyTheatre, elle a déjà assisté à des spectacles dans cette salle et elle sait qu’il y a tout type de spectacle.
+--| Elle en cherche un qui pourrait plaire au plus grand nombre.
+--| Elle indique qu’elle veut des spectacles pour tout public et indique la période qui lui conviendrait, inutile de regarder les spectacles proposés uniquement
+--| lorsque son équipe travaille de nuit.
+--| Elle obtient une liste de possibilités. Parmis celles-ci il y a un spectacle humoristique sur la vie en milieu hospitalier, voilà un spectacle qui parlera à tous.
+
+--@end
+
+--@ Janine va RealiserUneReservation
+
+--| En tarif plein, le coût est de 15€ par personne pour un placement dans le poulailler, 20€ par personne pour un placement dans la catégorie balcon et 25€ par
+--| personne pour un placement orchestre.
+--| Elle constate que la représentation le lundi soir à 20% de réduction par rapport à celle du dimanche soir.
+--| Comme l’équipe ne travaille pas le lundi soir, elle décide de prendre les billets pour cette représentation,
+--| cela lui laissera plus d’argent pour le  restaurant.
+--| Elle va prendre les billets.
+--| Elle indique qu’il lui faut 8 billets.
+
+    ! create dossierJanine : DossierAchat
+    ! dossierJanine._numeroDossierAchat_ := 234
+    ! dossierJanine.dateCreationDossier := '2019-03-18 09:32:22'
+    ! dossierJanine.eMailAcheteur := ''
+
+    ! create place1Janine : Place
+    ! place1Janine._numeroRang_ := 3
+    ! place1Janine._numeroPlace_ := 6
+
+    ! create zone1 : Zone
+    ! zone1._numeroZone_ := 1
+
+    ! insert(zone1,balcon) into EstAssocieeA
+    ! insert(zone1,place1Janine) into EstLocaliseeDans
+    ! create ticket1Janine : Ticket between (place1Janine,docteurParkinson1)
+    ! ticket1Janine._numeroTicket_ := 1
+
+
+    ! insert(ticket1Janine,reductionProfilPleinTarif) into BeneficieReduction
+    ! insert(dossierJanine,ticket1Janine) into Comporte
+
+    ! create place2Janine : Place
+    ! place2Janine._numeroRang_ := 3
+    ! place2Janine._numeroPlace_ := 7
+    ! insert(zone1,place2Janine) into EstLocaliseeDans
+    ! create ticket2Janine : Ticket between (place2Janine,docteurParkinson1)
+    ! ticket2Janine._numeroTicket_ := 2
+    ! ticket2Janine.dateAchat := ''
+
+    ! insert(ticket2Janine,reductionProfilPleinTarif) into BeneficieReduction
+    ! insert(dossierJanine,ticket2Janine) into Comporte
+
+    ! create place3Janine : Place
+    ! place3Janine._numeroRang_ := 3
+    ! place3Janine._numeroPlace_ := 8
+    ! insert(zone1,place3Janine) into EstLocaliseeDans
+    ! create ticket3Janine : Ticket between (place3Janine,docteurParkinson1)
+    ! ticket3Janine._numeroTicket_ := 3
+    ! ticket3Janine.dateAchat := '2019-03-18 09:38:02'
+
+    ! insert(ticket3Janine,reductionProfilPleinTarif) into BeneficieReduction
+    ! insert(dossierJanine,ticket3Janine) into Comporte
+
+    ! create place4Janine : Place
+    ! place4Janine._numeroRang_ := 3
+    ! place4Janine._numeroPlace_ := 9
+    ! insert(zone1,place4Janine) into EstLocaliseeDans
+    ! create ticket4Janine : Ticket between (place4Janine,docteurParkinson1)
+    ! ticket4Janine._numeroTicket_ := 4
+    ! ticket4Janine.dateAchat := '2019-03-18 09:38:02'
+
+    ! insert(ticket4Janine,reductionProfilPleinTarif) into BeneficieReduction
+    ! insert(dossierJanine,ticket4Janine) into Comporte
+
+    ! create place5Janine : Place
+    ! place5Janine._numeroRang_ := 3
+    ! place5Janine._numeroPlace_ := 10
+    ! insert(zone1,place5Janine) into EstLocaliseeDans
+    ! create ticket5Janine : Ticket between (place5Janine,docteurParkinson1)
+    ! ticket5Janine._numeroTicket_ := 5
+    ! ticket5Janine.dateAchat := '2019-03-18 09:38:02'
+
+    ! insert(ticket5Janine,reductionProfilPleinTarif) into BeneficieReduction
+    ! insert(dossierJanine,ticket5Janine) into Comporte
+
+    ! create place6Janine : Place
+    ! place6Janine._numeroRang_ := 3
+    ! place6Janine._numeroPlace_ := 11
+    ! insert(zone1,place6Janine) into EstLocaliseeDans
+    ! create ticket6Janine : Ticket between (place6Janine,docteurParkinson1)
+    ! ticket6Janine._numeroTicket_ := 6
+    ! ticket6Janine.dateAchat := '2019-03-18 09:38:02'
+
+    ! insert(ticket6Janine,reductionProfilPleinTarif) into BeneficieReduction
+    ! insert(dossierJanine,ticket6Janine) into Comporte
+
+    ! create place7Janine : Place
+    ! place7Janine._numeroRang_ := 3
+    ! place7Janine._numeroPlace_ := 12
+    ! insert(zone1,place7Janine) into EstLocaliseeDans
+    ! create ticket7Janine : Ticket between (place7Janine,docteurParkinson1)
+    ! ticket7Janine._numeroTicket_ := 7
+    ! ticket7Janine.dateAchat := '2019-03-18 09:38:02'
+
+    ! insert(ticket7Janine,reductionProfilEtudiant) into BeneficieReduction
+    ! insert(dossierJanine,ticket7Janine) into Comporte
+
+
+    ! create place8Janine : Place
+    ! place8Janine._numeroRang_ := 3
+    ! place8Janine._numeroPlace_ := 13
+    ! insert(zone1,place8Janine) into EstLocaliseeDans
+    ! create ticket8Janine : Ticket between (place8Janine,docteurParkinson1)
+    ! ticket8Janine._numeroTicket_ := 8
+    ! ticket8Janine.dateAchat := '2019-03-18 09:38:02'
+
+    ! insert(ticket8Janine,reductionProfilEtudiant) into BeneficieReduction
+    ! insert(dossierJanine,ticket8Janine) into Comporte
+
+--| Parmi les membres de l’équipe, deux sont stagiaires. Elle constate que plusieurs tarifs existent.
+--| Le tarif étudiant applique une réduction de 20% au tarif (en plus de la réduction appliquée le lundi soir).
+--| Elle commande donc 2 places au tarif étudiant et 6 places au tarif plein.
+
+--@ end
+
+--@ Janine va PayerDesBillets
+
+    ! dossierJanine.eMailAcheteur := 'janine@domaine.com'
+    ! ticket1Janine.dateAchat := '2019-03-18 09:38:02'
+
+--| Elle paie en CB (ses collègues la rembourseront plus tard).
+--| Elle peut ensuite choisir d’avoir ses billets en version imprimable (PDF) qui lui seront envoyées par email ou d’en avoir une version mobile qu’elle présenterait à l’entrée.
+--| Elle choisit de les avoir en version imprimable pour pouvoir les distribuer à chaque participant.
+
+--@ end

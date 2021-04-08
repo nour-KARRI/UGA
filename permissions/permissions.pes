@@ -1,0 +1,47 @@
+//=========================================================================
+//                      Permission model
+//-------------------------------------------------------------------------
+// This permission model is expressed in PermissionScript
+// See https://modelscript.rtfd.io/en/latest/scripts/permissions/index.html
+//=========================================================================
+
+permission model MyTheatre
+import glossary model from "../glossaries/glossaries.gls"
+import class model from "../classes/classes.cl1"
+import participant model from "../participants/participants.pas"
+import usecase model "../usecases/usecases.uss"
+// import relation model "../relations/relations.res"
+
+------------------------------------------------------------------
+-- Cas d’utilisation en premier
+------------------------------------------------------------------
+
+ConsulterLaProgrammation can read Representation
+RealiserUnePreReservation can create Ticket, DossierAchat
+RealiserUnePreReservation can create Reserve
+RealiserUneReservation can create Ticket, DossierAchat
+AcheterDesBillets can update Tickets
+AcheterDesBillets can update DossierAchat
+
+
+------------------------------------------------------------------
+-- Cas classe en premier
+------------------------------------------------------------------
+
+
+Spectateur can read Spectacle
+Spectateur can read EstProgrammeeLe
+Spectateur can read Representation
+Spectateur can read Concerne
+Spectateur can read Ticket
+Spectateur can create Ticket
+Spectateur can read Comporte
+Spectateur can read DossierAchat
+Spectateur can create DossierAchat
+Spectateur can update DossierAchat
+Spectateur can read Reserve
+Spectateur can read Place
+Spectateur can read EstLocaliseeDans
+Spectateur can read Zone
+
+

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2019-02-07" view-index="0" gantt-divider-location="361" resource-divider-location="300" version="2.8.10" locale="en_US">
+    <description/>
+    <view zooming-state="default:1" id="gantt-chart">
+        <field id="tpd3" name="Name" width="192" order="0"/>
+        <field id="tpd4" name="Begin date" width="80" order="1"/>
+        <field id="tpd5" name="End date" width="85" order="2"/>
+        <timeline><![CDATA[131]]></timeline>
+        <option id="color.recent"><![CDATA[#ff9900 #00ffff #33ff00 #ff00ff #ff00cc #000000 #00ff00 #ffff00 #000099 #ff0000]]></option>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Name" width="210" order="0"/>
+        <field id="1" name="Default role" width="86" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="0" name="Stand-up meeting 1" color="#000099" meeting="false" start="2019-02-18" duration="1" complete="0" thirdDate="2019-02-18" thirdDate-constraint="0" expand="true"/>
+        <task id="20" name="Concepts" color="#8cb6ce" meeting="false" start="2019-02-18" duration="2" complete="0" thirdDate="2019-02-18" thirdDate-constraint="0" webLink="https%3A%2F%2Fmodelscript.readthedocs.io%2Fen%2Flatest%2Fmethods%2Fconcepts%2Fconcepts.classes%2Findex.html" expand="true">
+            <notes><![CDATA[définition classes, association
+compilation
+scénario
+glossaire
+contraintes
+objets
+]]></notes>
+            <depend id="22" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="173" name="IHM" color="#ff9900" meeting="false" start="2019-02-21" duration="2" complete="0" thirdDate="2019-02-04" thirdDate-constraint="0" expand="true"/>
+        <task id="131" name="Sprint1.Développement." color="#ff00cc" shape="1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0" meeting="false" start="2019-02-20" duration="2" complete="0" thirdDate="2019-02-18" thirdDate-constraint="0" expand="true">
+            <notes><![CDATA[Création projet Netbeans
+Définition des classes
+tests unitaires
+ecriture des méthodes
+test d'intégraton
+test fonctionnel
+]]></notes>
+        </task>
+        <task id="1" name="Stand-up meeting 2" color="#000099" meeting="false" start="2019-02-19" duration="1" complete="0" thirdDate="2019-02-18" thirdDate-constraint="0" expand="true"/>
+        <task id="129" name="Stand-up meeting 3" color="#000099" meeting="false" start="2019-02-20" duration="1" complete="0" thirdDate="2019-02-22" thirdDate-constraint="0" expand="true"/>
+        <task id="4" name="Retrospective" color="#ffff00" shape="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" meeting="false" start="2019-02-20" duration="1" complete="0" thirdDate="2019-02-18" thirdDate-constraint="0" expand="true"/>
+        <task id="22" name="Cas d'utilisations" color="#8cb6ce" meeting="false" start="2019-02-20" duration="1" complete="0" thirdDate="2019-02-18" thirdDate-constraint="0" webLink="https%3A%2F%2Fmodelscript.readthedocs.io%2Fen%2Flatest%2Flanguages%2Fparticipants%2Findex.html" expand="true">
+            <notes><![CDATA[Permissions
+preliminaires
+participants]]></notes>
+        </task>
+        <task id="51" name="Base de données" color="#8cb6ce" meeting="false" start="2019-02-19" duration="2" complete="0" thirdDate="2019-02-18" thirdDate-constraint="0" expand="true">
+            <notes><![CDATA[relations
+création de bdd
+réalisation dataset pos et neg]]></notes>
+        </task>
+        <task id="72" name="Stand-up meeting 4" color="#000099" meeting="false" start="2019-02-21" duration="1" complete="0" thirdDate="2019-02-22" thirdDate-constraint="0" expand="true"/>
+        <task id="74" name="Stand-up meeting 5" color="#000099" meeting="false" start="2019-02-22" duration="1" complete="0" thirdDate="2019-02-22" thirdDate-constraint="0" expand="true"/>
+        <task id="29" name="Rétrospective fin sprint" color="#ffff00" shape="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" meeting="false" start="2019-02-22" duration="1" complete="0" thirdDate="2019-02-18" thirdDate-constraint="0" expand="true"/>
+        <task id="8" name="Livraison v1" color="#ff0000" meeting="true" start="2019-02-22" duration="0" complete="0" thirdDate="2019-02-18" thirdDate-constraint="0" expand="true">
+            <notes><![CDATA[20h]]></notes>
+        </task>
+    </tasks>
+    <resources>
+        <resource id="0" name="ABL" function="Default:0" contacts="" phone=""/>
+        <resource id="1" name="YBI" function="Default:0" contacts="" phone=""/>
+        <resource id="2" name="NKE" function="Default:0" contacts="" phone=""/>
+        <resource id="3" name="MBN" function="Default:0" contacts="" phone=""/>
+    </resources>
+    <allocations>
+        <allocation task-id="0" resource-id="0" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="22" resource-id="0" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="20" resource-id="0" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="131" resource-id="0" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="0" resource-id="1" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="20" resource-id="1" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="131" resource-id="1" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="0" resource-id="2" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="20" resource-id="2" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="131" resource-id="2" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="0" resource-id="3" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="20" resource-id="3" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="131" resource-id="3" function="Default:0" responsible="false" load="100.0"/>
+    </allocations>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+</project>

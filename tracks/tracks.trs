@@ -1,0 +1,78 @@
+//=========================================================================
+//                      Track model
+//-------------------------------------------------------------------------
+// This glossary model is expressed in TrackScript
+// See https://modelscript.rtfd.io/en/latest/scripts/tracks/index.html
+//=========================================================================
+
+track model MyTheatre
+import glossary model from "../glossaries/glossaries.gls"
+
+Question Q1 : besoin de définir un usecase ConfirmerSaPreReservation
+    | faut-il un usecase ConfirmerSaPreReservation
+    | ou simplement RealiserUnePréRéservation ?
+    status: close
+    date: 2019-02-18
+    who: MBN
+    conlusion : nous avons implémenté un usecase PayerDesBillets
+    qui peut être à posterieuri d'une PréRéservation ou d'une Réservation
+
+Decision D1 :
+    | chaque zone commence au numero de rang 1
+    status: close
+    date: 2019-02-18
+    who: ABL
+    conclusion : en accord avec le client BD, nous avons
+    choisi de démarrer la numéroration de chaque zone au
+    numero de rang 1.
+
+Decision D2 :
+    | choix gestion des énumérations
+    status : close
+    date : 2019-03-13
+    who : ABL MBN NKE YBI
+    conclusion : nous optons pour la création de classe + association
+
+Decision D3 :
+    | choix preReservation par défaut possible ISSUE #55
+    status : close
+    date : 2019-03-14
+    who : ABL MBN NKE YBI
+    conclusion : retour client par défaut possible
+
+Question Q2 : ajout synopsis dans la classe Spectacle --[issue#29]
+    | un résumé du spectacle semble devoir être affiché sur la page
+    | de programmation.
+    status: close
+    who : MBN, ABL
+    conclusion : le client a confirmé son souhait de voir apparaitre
+    le synopsis dans la programmation.
+
+Question Q3 : type de spectacle --[issue#27]
+    | un type de spectacle doit-il être implémenté ?
+    status : close
+    who : MBN, ABL
+    conclusion : le client a confirmé son souhait de voir apparaitre
+    les types de spectacle suivants : musical, improvisation, comédie
+    tragédie, intrigue
+
+Question Q4 : gestion prix place --[issue#28]
+    | gestion des prix de place selon la date de programmation
+    status : close
+    who : MBN, ABL
+    conclusion : le client a confirmé son souhait de pouvoir modifier
+    le tarif de certain Spectacle à cetaines dates.
+
+Question Q5 : la gestion des types de Categorie
+    | la gestion des Categorie sera faite côté Application
+    status : close
+    who : MBD
+    conclusion : la liste des catégorie sera gérée en dèv afin de pouvoir
+    gérer des modifications demandées par le client (sans devoir recréer la BDD)
+
+Question Q6 : calcul prix billet avec 2 reductions
+    | comment calculer le prix si on a 2 reductions ?
+    status : close
+    who : MBN
+    conclusion : retour client issue #63 :
+    Exemple billet 10 euros : Prix du billet = 90% x 10 x 80% = 9 x 0,8 = 7,2 euros

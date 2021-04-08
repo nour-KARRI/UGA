@@ -1,0 +1,115 @@
+--=========================================================================
+--                          Scenario Model
+---------------------------------------------------------------------------
+-- This object model is expressed in ScenarioScript1.
+-- See https://modelscript.readthedocs.io/en/latest/scripts/scenarios1/index.html
+-- ScenarioScript1 is an annotated version of USE OCL.
+-- Annotations are in comments and start with
+--    "@" for statement annotations
+--    "|" for documentation annotations
+--=========================================================================
+--
+--@ scenario model S1
+--@ import glossary model from "../../glossaries/glossaries.gls"
+--@ import class model from "../../classes/classes.cl1"
+--@ import participant model from "../../participants.pas"
+--@ import usecase model from "../../usecases/usecases.uss"
+
+open -q ../../objects/o1/o1.ob1
+
+--@ context
+
+--| Paul vient d’apprendre que sa soeur venait lui rendre visite ce week end [A1].
+--| Elle souhaite lui présenter son nouveau compagnon. [A2]
+--| Il se dit que c’est l’occasion de sortir,
+--| il demandera à sa belle-mère de garder les enfants. [A3]
+--| Sa soeur a toujours aimé le théâtre
+--| donc il va regarder la programmation proposée par MyTheatre. [A4]
+
+--@ end
+
+--@ Paul va ConsulterLaProgrammation
+
+--| Il va sur le site internet et indique la date du vendredi(arrivée de ses visiteurs),
+--| samedi et dimanche car il ne sait pas quand sa soeur a prévu de repartir. [A5]
+--| Dans la programmation pour ces dates, trois spectacles sont proposés. [A6]
+
+--| L’un d’eux n’a lieu qu’à 18h. [A7]
+--| A cette heure là, il y a beaucoup à faire avec les enfants
+--| donc il choisit de ne pas le considérer. [A8]
+--| Pour les deux autres, les horaires conviennent. [A9]
+--| Il ne sait ce que sa soeur préférerait et aucun n’est complet. [A10]
+
+--@ end
+
+
+
+
+-- Scénario 1bis
+-- Client:PréRéservation
+
+
+--@ context
+--| Paul préfère le spectacle Le malade imaginaire de Molière. [B1]
+--@ end
+
+--@ Paul va RealiserUnePreReservation
+
+--| Comme il ne reste plus beaucoup de places et
+--| que l'option réservation sans payer pendant 24h”
+--| est possible pour cette représentation,
+--| il choisit de réserver 4 places au centre du second rang. [B2]
+--| Il reçoit par email la confirmation de la préréservation.[B3]
+
+
+    ! create dossierPaul : DossierAchat
+    ! dossierPaul._numeroDossierAchat_ := 10
+
+    ! create ticket1Paul : Ticket between (place1Paul,maladeImaginaire1)
+    ! ticket1Paul._numeroTicket_ := 11
+    ! ticket1Paul.dateAchat := Undefined
+    ! insert(dossierPaul,ticket1Paul) into Comporte
+
+    ! insert(ticket1Paul,reductionProfilPleinTarif) into BeneficieReduction
+
+
+    ! create ticket2Paul : Ticket between (place2Paul,maladeImaginaire1)
+    ! ticket2Paul._numeroTicket_ := 12
+    ! ticket2Paul.dateAchat := Undefined
+    ! insert(dossierPaul,ticket2Paul) into Comporte
+
+    ! insert(ticket2Paul,reductionProfilPleinTarif) into BeneficieReduction
+
+
+    ! create ticket3Paul : Ticket between (place3Paul,maladeImaginaire1)
+    ! ticket3Paul._numeroTicket_ := 13
+    ! ticket3Paul.dateAchat := Undefined
+    ! insert(dossierPaul,ticket3Paul) into Comporte
+
+    ! insert(ticket3Paul,reductionProfilPleinTarif) into BeneficieReduction
+
+
+    ! create ticket4Paul : Ticket between (place4Paul,maladeImaginaire1)
+    ! ticket4Paul._numeroTicket_ := 14
+    ! ticket4Paul.dateAchat := Undefined
+    ! insert(dossierPaul,ticket4Paul) into Comporte
+
+    ! insert(ticket4Paul,reductionProfilPleinTarif) into BeneficieReduction
+
+
+--@ end
+
+--@ context
+--| Le lendemain, sa soeur lui indique que sa préférence va au Malade imaginaire
+--@ end
+
+--@ Paul va PayerDesBillets [Q1]
+--| donc il confirme sa réservation et paie ses places.[B4]
+
+    ! ticket4Paul.dateAchat := '2019-03-20 09:00:00'
+    ! ticket3Paul.dateAchat := '2019-03-20 09:00:00'
+    ! ticket2Paul.dateAchat := '2019-03-20 09:00:00'
+    ! ticket1Paul.dateAchat := '2019-03-20 09:00:00'
+
+
+--@ end

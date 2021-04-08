@@ -1,0 +1,40 @@
+//=========================================================================
+//                      Usecase model
+//-------------------------------------------------------------------------
+// This usecase model is expressed in UsecaseScript
+// See https://modelscript.rtfd.io/en/latest/scripts/usecases/index.html
+//=========================================================================
+
+usecase model MyTheatre
+import glossary model from "../glossaries/glossaries.gls"
+import participant model from "../participants/participants.pas"
+
+interactions
+a Spectateur can ConsulterLaProgrammation
+a Spectateur can RealiserUnePreReservation
+a Spectateur can RealiserUneReservation
+a Spectateur can PayerDesBillets
+
+
+usecase ConsulterLaProgrammation
+    actor Spectateur
+    | Un `Spectateur` peut, depuis l'application `MyTheatre`, Consulter
+    | la `Programmation` du theatre utilisant `MyTheatre`.
+
+usecase RealiserUneReservation
+    actor Spectateur
+    | Un `Spectateur` peut, depuis la `Programmation`, réaliser
+    | une `Réservation` d'un certain nombre
+    | de `billets` pour une `Représentation` donnée.
+
+usecase RealiserUnePreReservation
+    actor Spectateur
+    | Un `Spectateur` peut, depuis la `Programmation`, réaliser
+    | une `Préréservation` d'un certain nombre
+    | de `billets` pour une `Représentation` donnée.
+  	| La `Prereservation`est sauvegardee et necessite une confirmation
+    | pour pouvoir acheter les `billets`.
+
+usecase PayerDesBillets
+    actor Spectateur
+    | Un `Spectateur` peut payer des `billets` qui ont fait l'objet d'une `Reservation`.

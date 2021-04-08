@@ -1,0 +1,164 @@
+//=========================================================================
+//                      Glossary model
+//-------------------------------------------------------------------------
+// This glossary model is expressed in GlossaryScript
+// See https://modelscript.rtfd.io/en/latest/scripts/glossaries/index.html
+//=========================================================================
+
+glossary model MyTheatre
+
+
+CategorieZone
+    | Une `Categorie` est associée à un `prix` d'une zone applicable à l'ensemble
+    | des `Spectacles`.[Q5]
+    synonyms : Categorie
+
+Coordonnées bancaires
+    | Correspond aux informations à saisir sur `MyTheatre` pour valider le paiement.
+
+DateAchat
+    | Correspond a la date de l achat. Cette date est renseignee dans les `tickets`
+    | Cette `dateAchat` est aussi renseignee dans le `dossierAchat` lorsque l utilisateur
+    | n a pas effectue de `preReservation`
+
+Details
+    | Les `details` d'une `Representation` correspondent au `synopsis` du `Spectacle`.
+
+DossierAchat
+    | Identifié par son 'numeroDossier' correspond à l'achat de plusieurs `Ticket` achetes a la meme `date` et même `heure`
+    | par une même personne. Un `eMailAcheteur` peut être associé au dossier dans le cas d'une `PreReservation` et d'un `Achat`.
+    synonyms : panier, PanierAchat
+
+Filtre
+    | Correspond à un critère de recherche permettant à l'utilisateur de filtrer les `Representations` affichées
+    | par `MyTheatre` pour consultation.
+
+Genre
+    | Correspond au genre de `Spectacle`, il peut etre  : musical, improvisation,comedie,tragedie,intrigue.
+
+
+mail
+    | Courriel saisi par l'utilisateur pour faire une `PreReservation` ou un paiement.
+    synonyms : eMail, courriel, email
+
+MyTheatre
+    | Application Web développée pour la gestion d'un `Theatre`.
+
+numeroDossier
+    | Il identifie le `DossierAchat`par un nombre entier unique.    |
+
+PanierAchat
+    | Equivalent en IHM au `DossierAchat`
+    synonyms : panier, DossierAchat
+
+Place
+    | Une `place` est attribuee a un `Spectateur`.
+    | La salle unique du `Theatre` est composee de plusieurs `place`
+    | Une place est représentée par son `numero` de `Rang` et son `numero` de `Place`
+	  | Le numero de rang n'est pas unique dans la `salle`.
+	  | Chaque zone commence au numero de rang 1 [D1].
+    synonyms : siège
+    inflections : places, place
+
+PlaceAchetees
+    | Correspond à une `place` achetée et qui  beneficie d un `tauxReductionProfil`
+	| Une place achetée permet d'obtenir un `ticket` dont la `dateAchat` est renseignée.
+
+PreReservation --@ [D3]
+    | Une `Spectateur` peut, au moment où il consulte la `Programmation`,
+    | demander à MyTheatre de lui réserver un certain nombre de places
+    | pour une `Representation` donnée. Dans ce cas, il recoit un mail contenant
+    | son `numeroDossier`. Le `Spectateur` peut revenir plus tard sur `MyTheatre`
+    | afin de confirmer son `Achat` en saisissant son `numeroDossier`.
+    synonyms : pré-réservation
+
+ReductionProfilSpectateur
+    | A chaque billet doit correspondre une `ReductionProfilSpectateur`
+    | identifiée par son `nomProfilSpectateur`.
+    | Un `spectateur` peut modifier son `ReductionProfilSpectateur` lors de l'achat d'un `ticket`.
+    | Par défaut, le profil proposé dans `MyTheatre` est Plein tarif.
+    | Les `nomProfilSpectateur` disponibles par défaut sont :
+    | Plein tarif,Etudiant,Famille nombreuse,Adherent. Son `nomProfilSpectateur` est
+    | affecté à un taux de réduction 'tauxReductionProfil'.
+    synonyms : profil, profilSpectateur,profil reduction
+
+Programmation
+    | Une `Programmation` correpond à l'ensemble des `Representation` sur une durée
+    | donnée partant de la date courante.
+
+Programme en ligne
+    | C'est la `Programmation` du `Theatre` consultable depuis Internet sur
+    | l'application `MyTheatre`.
+
+Public
+    | Chaque `Spectacle` est affecté à un typePublic correpondant à une indication
+    | donnée au `Spectateur` du `Public` visé en fonction de son age.
+
+Rang
+    | Un `Rang` permet d'identifier, en plus du `numero` de `Place`, une `Place`.
+    | Les rangs sont numérotés de 1 à n, n étant le nombre de rangées de `Siège`
+    | prévu pour une `Zone` donnée.
+
+Reduction
+    | Une `Reduction` est appliquée au prix du billet :
+    | elle peut être liée au profil du `Spectateur` et/ou à une réduction liée à la `Représentation`.
+
+ReferencePanier
+    | Synonyme en IHM du numero de Dossier
+
+Representation
+    | Une `Representation` est définie par le fait qu'un `spectacle` donné
+    | se déroule à une `date` et `heure` données.
+    | Il ne peut y avoir qu'une `representation` par jour.
+    inflections : representations
+
+Salle
+    | Endroit existant dans le batiment appartenant au Theatre où sont représentées
+    | les `Pièces`. Elle contient des `Places` destinées aux `Spectateurs`.
+
+Spectacle
+    | `Spectacle` programmé ou ayant été programmé au `Theatre`
+    | lors d une `representation`  [Q2] [Q3] [Q5]
+   	synonyms : piece, Pièces, Pièce
+    inflections : Spectacles, spectacle
+
+Spectateur
+    | Personne allant a une `Representation`. Chaque `Spectateur`possede un `Ticket`.
+	  inflections : spectateurs
+
+Synopsis
+    | Une breve description qui indique au `Spectateur` le résumé d'un `Spectacle`.
+
+tauxReductionProfil
+    | Une `Reduction` dont peut beneficier un spectateur en fonction de son `ProfilSpectateur`.
+
+tauxReduction
+    | Une `Reduction` dont peuvent beneficier tous les spectateurs qui reservent une `Representation` concernée par cette réduction.
+
+Theatre
+    | Etablissement qui propose des `Spectacles` et vend des `Billets`
+    | donnant le droit d'accéder à la `Salle` du `Theatre`
+    | où se déroulent les `Représentations`.
+
+Ticket
+    | Donne accès à un `Spectateur` à une `Place` pour une `Representation`
+    | d'un `Spectacle`.
+    | Un `Ticket` est representé par son numero de serie, la date d'achat,
+    | l'heure d'achat.
+    inflections : tickets, ticket
+    synonyms : billet
+
+Titulaire
+    | Nom saisi par le `spectateur` afin de pouvoir recevoir ses `billets`.
+
+Version mail
+    | Après le paiement de son DossierAchat le `spectateur` peut choisir d'imprimer ses `billets` en PDF avec un QRCode.
+    | Il recoit alors par mail chaque `billet` en format PDF avec un QRCode.
+
+Version PDF téléchargeable
+    | Après le paiement de son DossierAchat le `spectateur` peut choisir d'imprimer ses `billets` en PDF avec un QRCode.
+    | Il recoit alors par mail chaque `billet` en format PDF avec un QRCode.
+
+Zone
+    | Une `Zone` regroupe plusieurs `Places`
+	  | Chaque zone est associée à une seule `CategorieZone`.

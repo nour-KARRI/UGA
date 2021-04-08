@@ -1,0 +1,165 @@
+--=========================================================================
+--                          Class Model
+---------------------------------------------------------------------------
+-- This glossary model is expressed in GlossaryScript.
+-- See https://modelscript.readthedocs.io/en/latest/scripts/classes1/index.html
+-- ClassScript1 is an annotated version of USE OCL.
+-- Annotations are in comments and start with
+--    "@" for statement annotations
+--    "|" for documentation annotations
+--=========================================================================
+--
+--@ class model MyTheatre
+--@ import glossary model from "../glossaries/glossaries.gls"
+
+model MyTheatre
+
+------------------------------------------------------------------
+-- Enumerations
+------------------------------------------------------------------
+
+------------------------------------------------------------------
+-- Classes
+------------------------------------------------------------------
+
+class Spectacle
+    attributes
+        _numeroSpectacle_ : Integer
+        nomSpectacle : String
+		    synopsis : String
+end
+
+
+class Genre --@ [D2]
+    attributes
+        _nomGenre_ : String
+end
+
+
+class Public --@ [D2]
+    attributes
+        _typePublic_ : String
+end
+
+
+class Representation
+    attributes
+        _date_ : String --@ {Date}
+        _heure_ : String --@ {Time}
+        nbrPlacesRestantes : Integer --@{derived}
+	    	tauxReduction : Real
+        preReservation : Integer
+end
+
+
+class Place
+    attributes
+        _numeroRang_ : Integer
+        _numeroPlace_ : Integer
+end
+
+
+class Zone
+    attributes
+        _numeroZone_ : Integer
+end
+
+
+class CategorieZone --@ [D2]
+    attributes
+        _nomCategorieZone_ : String
+        prixCategorie : Real
+end
+
+
+class DossierAchat
+    attributes
+        _numeroDossierAchat_ : Integer
+	      dateCreationDossier : String --@ {DateTime}
+        prixGlobalDossier : Real --@{derived}
+        eMailAcheteur : String
+end
+
+
+class ReductionProfilSpectateur
+    attributes
+        _nomProfilSpectateur_ : String
+        tauxReductionProfil : Real
+end
+
+
+--@constraints
+--@ invariant
+
+--@ constraint UniqueRepresentationQuotidienne
+--@     scope
+--@         Representation.date
+--@         Representation.heure
+--@			    EstProgrammee
+--@         Spectacle
+--@     | Un spectacle ne peut etre programme qu une fois par jour au maximum
+
+--@ constraint DateAchatTicket
+--@     scope
+--@         Ticket.dateAchat
+--@		    	Ticket.heureAchat
+--@         Representation.date
+--@			    Representation.heure
+--@			    Concerne
+--@		| La date d'achat du ticket ne peut pas etre supérieure à la date de la représentation
+
+
+
+------------------------------------------------------------------
+-- Associations
+------------------------------------------------------------------
+association EstProgrammeeLe
+    between
+        Spectacle[1] role spectacle
+        Representation[*] role representations
+end
+
+association Comporte
+    between
+        DossierAchat[1] role dossierAchat
+        Ticket[1..*] role tickets
+end
+
+composition EstLocaliseeDans
+    between
+        Zone[1] role zone
+	 	    Place[1..*] role places
+end
+
+association BeneficieReduction
+    between
+        Ticket[0..*] role ticket
+        ReductionProfilSpectateur[1] role reduction
+end
+
+association CorrespondAu
+    between
+        Spectacle[*] role spectacle
+        Genre[1] role genreSpectacle
+end
+
+association EstAssocieeA
+    between
+        Zone[*] role zone
+        CategorieZone[1] role categorieDeZone
+end
+
+associationclass Ticket
+    between
+        Place [*] role placeOccupee
+        Representation [*] role representation
+    attributes
+        _numeroTicket_ : Integer
+        dateAchat : String --@ {DateTime}
+end
+
+association EstDestine
+    between
+        Spectacle[*] role spectacle
+        Public[1] role typePublic
+end

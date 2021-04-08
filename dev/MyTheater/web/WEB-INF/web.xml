@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    
+    <welcome-file-list>
+        <welcome-file>touteLaProg</welcome-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>TicketsCtrler</servlet-name>
+        <servlet-class>m2pcci.im2ag.MyTheater.ctrlers.TicketsCtrler</servlet-class>
+        <init-param>
+            <!--    
+                serveur smtp  
+            -->
+            <param-name>smtp_server</param-name>
+            <param-value>smtps.univ-grenoble-alpes.fr</param-value>
+        </init-param>
+        <init-param>
+            <!--    
+                port serveur smtp  
+            -->
+            <param-name>smtp_port</param-name>
+            <param-value>587</param-value>
+        </init-param>
+        <init-param>
+            <!--    
+                nom utilisateur mail 
+            -->
+            <param-name>mail_user_name</param-name>
+            <param-value>barela</param-value>
+        </init-param>
+        <init-param>
+            <!--    
+                mot de passe utilisateur mail  
+            -->
+            <param-name>mail_user_passwd</param-name>
+            <param-value>Damidoku381991</param-value>
+        </init-param>
+        <init-param>
+            <!--    
+                adresse mail pour l'expéditeur 
+            -->
+            <param-name>sender</param-name>
+            <param-value>antoine.barel@etu.univ-grenoble-alpes.fr</param-value>
+        </init-param>
+        <init-param>
+            <!--
+               le titre (objet) du mail
+            -->
+            <param-name>title</param-name>
+            <param-value>Votre ticket électronique   !!!</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <!--
+           définition de l'URL pour cette servlet
+        -->
+        <servlet-name>TicketsCtrler</servlet-name>
+        <url-pattern>/TicketsCtrler</url-pattern>
+    </servlet-mapping>   
+   
+    <!--
+      Definition de la ressource Session pour le mail
+    -->
+    <resource-ref>
+        <res-ref-name>mail/DEMO</res-ref-name>
+        <res-type>javax.mail.Session</res-type>
+    </resource-ref>
+    
+    <servlet>
+        <servlet-name>PrereservationControleur</servlet-name>
+        <servlet-class>m2pcci.im2ag.MyTheater.ctrlers.PrereservationControleur</servlet-class>
+        <init-param>
+            <!--    
+                serveur smtp  
+            -->
+            <param-name>smtp_server</param-name>
+            <param-value>smtps.univ-grenoble-alpes.fr</param-value>
+        </init-param>
+        <init-param>
+            <!--    
+                port serveur smtp  
+            -->
+            <param-name>smtp_port</param-name>
+            <param-value>587</param-value>
+        </init-param>
+        <init-param>
+            <!--    
+                nom utilisateur mail 
+            -->
+            <param-name>mail_user_name</param-name>
+            <param-value>barela</param-value>
+        </init-param>
+        <init-param>
+            <!--    
+                mot de passe utilisateur mail  
+            -->
+            <param-name>mail_user_passwd</param-name>
+            <param-value>Damidoku381991</param-value>
+        </init-param>
+        <init-param>
+            <!--    
+                adresse mail pour l'expéditeur 
+            -->
+            <param-name>sender</param-name>
+            <param-value>antoine.barel@etu.univ-grenoble-alpes.fr</param-value>
+        </init-param>
+        <init-param>
+            <!--
+               le titre (objet) du mail
+            -->
+            <param-name>title</param-name>
+            <param-value>Votre Pre-reservation MyTheatre</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PrereservationControleur</servlet-name>
+        <url-pattern>/PrereservationControleur</url-pattern>
+    </servlet-mapping>
+    
+   
+</web-app>

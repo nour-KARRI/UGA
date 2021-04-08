@@ -1,0 +1,89 @@
+#!/bin/bash
+
+betterCompile () {
+# specfile
+	useFile=$1
+# cmdFile
+	soilFile=$2
+	soilFileWithExit=${soilFile}_withExit
+	cp $soilFile ${soilFileWithExit}
+	echo "exit" >> $soilFileWithExit
+	#meilleure version: on utilise -nogui et cat -n pour retrouver le numero de ligne de lerreur ainsi que la ligne qui a posé probleme
+	echo "use -nogui -nr $useFile $soilFileWithExit  | grep -v Copyright > && cat -n tmp | grep -B 1 input && rm tmp"
+	rm tmp
+	use -nogui -nr $useFile $soilFileWithExit 2>&1 | grep -v Copyright > tmp && cat -n tmp | grep -B 1 input #&& rm tmp
+	echo
+	echo "use -qv $useFile $soilFile"
+	use -qv $useFile $soilFile
+}
+
+# check classes
+echo "##########################"
+echo "#######  CLASSES  ########"
+echo "##########################"
+echo "use -c classes/classes.cls"
+use -c classes/classes.cl1
+echo
+
+#check alignment object/classes
+echo "##########################"
+echo "#######  OBJECTS  ########"
+echo "##########################"
+#use -qv classes/classes.cl1 objects/o1/o1.ob1
+
+
+echo "#######  objet1  ########"
+betterCompile classes/classes.cl1 objects/o1/o1.ob1
+echo
+echo "#######  objet2  ########"
+betterCompile classes/classes.cl1 objects/o2/o2.ob2
+
+# check aligment scenarios/classes
+echo "###########################"
+echo "#######  SCENARIOS  #######"
+echo "###########################"
+#use -qv classes/classes.cl1 scenarios/s1/s1.sc1
+echo "#######  scenario 1  ########"
+#betterCompile classes/classes.cl1 scenarios/s1/s1.sc1
+use -qv classes/classes.cl1 scenarios/s1/s1.sc1
+echo
+echo "#######  scenario 2  ########"
+#betterCompile classes/classes.cl1 scenarios/s2/s2.sc2
+use -qv classes/classes.cl1 scenarios/s2/s2.sc2
+echo
+echo "######################################"
+echo "#######  MODELSCRIPT.glossary  #######"
+echo "######################################"
+#modelc glossaries/glossaries.gls
+echo
+
+echo "##########################################"
+echo "#######  MODELSCRIPT.participants  #######"
+echo "##########################################"
+#modelc participants/participants.pas
+echo
+
+echo "######################################"
+echo "#######  MODELSCRIPT.usecases  #######"
+echo "######################################"
+#modelc usecases/usecases.uss
+echo
+
+echo "######################################"
+echo "######  MODELSCRIPT.SQLschema  #######"
+echo "######################################"
+#sql/create-database.sh
+echo
+
+echo "######################################"
+echo "####  MODELSCRIPT.POSITIVE DS  #######"
+echo "######################################"
+#sql/create-database.sh ds1
+echo
+
+
+echo "######################################"
+echo "####  MODELSCRIPT.NEGATIVE DS  #######"
+echo "######################################"
+#sql/create-database.sh nds1
+echo

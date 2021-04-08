@@ -1,0 +1,17 @@
+/MyTheater/build/
+MyTheater/build.xml
+MyTheater/nbproject/build-impl.xml
+MyTheater/nbproject/project.xml
+MyTheater/web/META-INF/context.xml
+.nfs*
+.DS_Store
+dev/MyTheater/nbproject/build-impl.xml
+dev/MyTheater/nbproject/build-impl.xml~
+dev/MyTheater/build/web/META-INF/context.xml
+**/context.txt
+dev/MyTheater/build/*
+dev/MyTheater/build*
+*.class
+*withExit
+tmp
+/dev/MyTheater/dist/

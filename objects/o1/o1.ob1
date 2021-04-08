@@ -1,0 +1,257 @@
+--=========================================================================
+--                          Object Model
+---------------------------------------------------------------------------
+-- This object model is expressed in ObjectScript.
+-- See https://modelscript.readthedocs.io/en/latest/scripts/objects1/index.html
+-- ObjectScript1 is an annotated version of USE OCL.
+-- Annotations are in comments and start with
+--    "@" for statement annotations
+--    "|" for documentation annotations
+--=========================================================================
+--
+--@ object model O1
+--@ import glossary model from "../../glossaries/glossaries.gls"
+--@ import class model from "../../classes/classes.cl1"
+
+--| Le theatre propose differents profils de reduction
+    ! create reductionProfilPleinTarif : ReductionProfilSpectateur
+    ! reductionProfilPleinTarif._nomProfilSpectateur_ := 'Plein tarif'
+    ! reductionProfilPleinTarif.tauxReductionProfil := 0
+
+    ! create reductionProfilEtudiant : ReductionProfilSpectateur
+    ! reductionProfilEtudiant._nomProfilSpectateur_ := 'Etudiant'
+    ! reductionProfilEtudiant.tauxReductionProfil := 0.2
+
+    ! create reductionProfilFamilleNombreuse : ReductionProfilSpectateur
+    ! reductionProfilFamilleNombreuse._nomProfilSpectateur_ := 'Famille nombreuse'
+    ! reductionProfilFamilleNombreuse.tauxReductionProfil := 0.3
+
+    ! create reductionProfilAdherent : ReductionProfilSpectateur
+    ! reductionProfilAdherent._nomProfilSpectateur_ := 'Adhérent'
+    ! reductionProfilAdherent.tauxReductionProfil := 0.25
+
+
+
+--| Le theatre propose des spectacles de differents genre et destinés à
+--| différents types de public
+
+    ! create comedie : Genre
+    ! comedie._nomGenre_ := 'Comédie'
+    ! create tragedie : Genre
+    ! tragedie._nomGenre_ := 'Tragédie'
+
+    ! create publicAdulte : Public
+    ! publicAdulte._typePublic_ := 'Adulte'
+    ! create toutPublic : Public
+    ! toutPublic._typePublic_ := 'Tout public'
+
+
+
+--| Le théatre possède une salle découpée en différentes zones. Chaque zone
+--| est associée à une catégorie elle-même associée à un tarif
+
+    ! create poulailler : CategorieZone
+    ! poulailler._nomCategorieZone_ := 'Poulailler'
+    ! poulailler.prixCategorie := 15
+    ! create orchestre : CategorieZone
+    ! orchestre._nomCategorieZone_ := 'Orchestre'
+    ! orchestre.prixCategorie := 25
+    ! create balcon : CategorieZone
+    ! balcon._nomCategorieZone_ := 'Balcon'
+    ! balcon.prixCategorie := 20
+
+
+
+--| le Spectacle 'Le malade imaginaire' qui est une comédie
+--| et est destiné aux adultes. Il est programmé pour le 20/04/2019 à 19h00
+--| Cette représentation est préréservable
+
+    ! create maladeImaginaire : Spectacle
+    ! maladeImaginaire._numeroSpectacle_ := 3
+    ! maladeImaginaire.nomSpectacle := 'Le malade imaginaire'
+    ! maladeImaginaire.synopsis := 'Synopsis du malade imaginaire'
+
+    ! create maladeImaginaire1 : Representation
+    ! maladeImaginaire1._date_ := '20/05/2019'
+    ! maladeImaginaire1._heure_ := '19h00'
+  	! maladeImaginaire1.tauxReduction := 0
+    ! maladeImaginaire1.preReservation := 1
+
+    ! insert(maladeImaginaire,maladeImaginaire1) into EstProgrammeeLe
+    ! insert(maladeImaginaire,publicAdulte) into EstDestine
+    ! insert(maladeImaginaire,comedie) into CorrespondAu
+
+    ! create place1Paul : Place
+    ! place1Paul._numeroRang_ := 2
+    ! place1Paul._numeroPlace_ := 40
+    ! create zone5: Zone
+    ! zone5._numeroZone_ := 1
+    ! insert(zone5,place1Paul) into EstLocaliseeDans
+    ! insert(zone5,orchestre) into EstAssocieeA
+
+    ! create place2Paul : Place
+    ! place2Paul._numeroRang_ := 2
+    ! place2Paul._numeroPlace_ := 41
+    ! insert(zone5,place2Paul) into EstLocaliseeDans
+
+    ! create place3Paul : Place
+    ! place3Paul._numeroRang_ := 2
+    ! place3Paul._numeroPlace_ := 42
+    ! insert(zone5,place3Paul) into EstLocaliseeDans
+
+    ! create place4Paul : Place
+    ! place4Paul._numeroRang_ := 2
+    ! place4Paul._numeroPlace_ := 43
+    ! insert(zone5,place4Paul) into EstLocaliseeDans
+
+
+
+--| le Spectacle 'RomeoEtJuliette' est programmé pour le 20/04/2019 à 19h00.
+--| C'est une tragedie destinée à un public adulte
+    ! create romeoEtJuliette : Spectacle
+    ! romeoEtJuliette._numeroSpectacle_ := 1
+    ! romeoEtJuliette.nomSpectacle := 'RomeoEtJuliette'
+    ! romeoEtJuliette.synopsis := 'synopsis du de roméo et juliette'
+
+    ! create repRomeo1 : Representation
+    ! repRomeo1._date_ := '20/04/2019'
+    ! repRomeo1._heure_ := '19h00'
+    ! repRomeo1.tauxReduction := 0
+    ! repRomeo1.preReservation := 0
+
+    ! insert(romeoEtJuliette,repRomeo1) into EstProgrammeeLe
+    ! insert(romeoEtJuliette,tragedie) into CorrespondAu
+    ! insert(romeoEtJuliette,publicAdulte) into EstDestine
+
+
+--| une place de categorie Balcon en zone 1 , rang 3 place 6.
+    ! create place1Bob : Place
+    ! place1Bob._numeroRang_ := 3
+    ! place1Bob._numeroPlace_ := 6
+
+    ! create zone1 : Zone
+    ! zone1._numeroZone_ := 1
+
+    ! insert(zone1,balcon) into EstAssocieeA
+    ! insert(zone1,place1Bob) into EstLocaliseeDans
+
+
+
+--| une autre place de categorie Balcon en zone 2 , rang 1 place 3.
+    ! create place2Bob : Place
+    ! place2Bob._numeroRang_ := 1
+    ! place2Bob._numeroPlace_ := 3
+
+    ! create zone2 : Zone
+    ! zone2._numeroZone_ := 2
+
+    ! insert(zone2,balcon) into EstAssocieeA
+    ! insert(zone2,place2Bob) into EstLocaliseeDans
+
+
+
+--| Bob a acheté 2 places pour cette representation le 20/04/2019 à 15h00, 1 en pleinTarif et 1 profil etudiant
+    ! create dossierBob : DossierAchat
+    ! dossierBob._numeroDossierAchat_ := 1
+    ! dossierBob.dateCreationDossier := '01/02/2019 14h00'
+    ! dossierBob.eMailAcheteur := 'bob@domaine.com'
+
+    ! create ticket1Bob : Ticket between (place1Bob,repRomeo1)
+    ! ticket1Bob._numeroTicket_ := 1
+    ! ticket1Bob.dateAchat := '20/04/2019 15h00'
+
+    ! create ticket2Bob : Ticket between (place2Bob,repRomeo1)
+    ! ticket2Bob._numeroTicket_ := 2
+    ! ticket2Bob.dateAchat := '20/04/2019 15h00'
+
+    ! insert(dossierBob,ticket1Bob) into Comporte
+    ! insert(dossierBob,ticket2Bob) into Comporte
+
+    ! insert(ticket1Bob,reductionProfilEtudiant) into BeneficieReduction
+    ! insert(ticket2Bob,reductionProfilEtudiant) into BeneficieReduction
+
+
+--| le Spectacle 'RomeoEtJuliette' est programme aussi pour le 22/04/2019 à 20h00
+    ! create repRomeo2 : Representation
+    ! repRomeo2._date_ := '22/04/2019'
+    ! repRomeo2._heure_ := '20h00'
+    ! repRomeo2.tauxReduction := 0
+    ! repRomeo2.preReservation := 0
+
+    ! insert(romeoEtJuliette,repRomeo2) into EstProgrammeeLe
+
+
+--| le Spectacle 'Antigone' est programmé aussi pour le 25/06/2019 à 22h00.
+    ! create antigone : Spectacle
+    ! antigone._numeroSpectacle_ := 2
+    ! antigone.nomSpectacle := 'Antigone'
+    ! antigone.synopsis := 'synopsis d antigone'
+
+    ! insert(antigone,tragedie) into CorrespondAu
+    ! insert(antigone,publicAdulte) into EstDestine
+
+
+    ! create antigone1 : Representation
+    ! antigone1._date_ := '25/06/2019'
+    ! antigone1._heure_ := '22h00'
+    ! antigone1.tauxReduction := 0
+    ! antigone1.preReservation := 0
+
+
+    ! insert(antigone,antigone1) into EstProgrammeeLe
+
+
+--| il existe une zone 3
+    ! create zone3 : Zone
+    ! zone3._numeroZone_ := 3
+    ! insert(zone3,poulailler) into EstAssocieeA
+
+
+
+--| Martin va effectuer des achats, il crée donc un dossier d'achat
+    ! create dossierMartin : DossierAchat
+    ! dossierMartin._numeroDossierAchat_ := 2
+    ! dossierMartin.dateCreationDossier := '03/02/2019 15h00'
+    ! dossierMartin.eMailAcheteur := 'martin@domaine.com'
+
+
+--| il a aussi acheté 1 place pour la representation'Antigone' du 5/05/2019 le 20/04/2019 en Zone 4 pour un adherent
+    ! create place2Martin : Place
+    ! place2Martin._numeroRang_ := 5
+    ! place2Martin._numeroPlace_ := 1
+
+    ! insert(zone3,place2Martin) into EstLocaliseeDans
+
+    ! create antigone2 : Representation
+    ! antigone2._date_ := '05/05/2019'
+    ! antigone2._heure_ := '18h00'
+    ! antigone2.tauxReduction := 0
+    ! antigone2.preReservation := 0
+
+    ! insert(antigone,antigone2) into EstProgrammeeLe
+
+    ! create ticket2Martin : Ticket between (place2Martin,antigone2)
+    ! ticket2Martin._numeroTicket_ := 4
+    ! ticket2Martin.dateAchat :='20/04/2019 10h00'
+
+    ! insert(dossierMartin,ticket2Martin) into Comporte
+    ! insert(ticket2Martin,reductionProfilFamilleNombreuse) into BeneficieReduction
+
+
+--| la place est de categorie Poulailler en zone 3 , rang 3 place 5.
+    ! create place1Martin : Place
+    ! place1Martin._numeroRang_ := 3
+    ! place1Martin._numeroPlace_ := 5
+    ! insert(zone3,place1Martin) into EstLocaliseeDans
+
+
+--| Martin a acheté 1 place pour la representation'RomeoEtJuliette' du 22/04/2019 le 20/04/2019.
+
+    ! create ticket1Martin : Ticket between (place1Martin,repRomeo2)
+    ! ticket1Martin._numeroTicket_ := 3
+    ! ticket1Martin.dateAchat:='20/04/2019 10h00'
+
+    ! insert(dossierMartin,ticket1Martin) into Comporte
+    ! insert(ticket1Martin,reductionProfilFamilleNombreuse) into BeneficieReduction
+
+

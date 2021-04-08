@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <help_text/>
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>91</x>
+      <y>126</y>
+      <w>231</w>
+      <h>203</h>
+    </coordinates>
+    <panel_attributes>*Espace de consultation des représentations*
+--
+
+Date
+Periode
+Genre
+Public
+
+[Representations]
+
+--
+
+_Espace de consultation des representation_
+
+_Consultation détails représentation_
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>490</x>
+      <y>126</y>
+      <w>266</w>
+      <h>196</h>
+    </coordinates>
+    <panel_attributes>*Espace détails de la représentation*
+--
+
+Détails de la représentation
+
+--
+
+*Retour : espace de consultation des représentations*
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>315</x>
+      <y>154</y>
+      <w>105</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;20.0;60.0;10.0;130.0;50.0;90.0;110.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>315</x>
+      <y>280</y>
+      <w>189</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>250.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
